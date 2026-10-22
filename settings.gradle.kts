@@ -26,3 +26,4 @@ rootProject.name = "My Application"
 include(":app")
 include(":seminar04_1075")
 project(":seminar04_1075").projectDir = File(rootDir, "Seminarii_DAM/seminar04_1075/")
+include(":app:seminar02_1075")
