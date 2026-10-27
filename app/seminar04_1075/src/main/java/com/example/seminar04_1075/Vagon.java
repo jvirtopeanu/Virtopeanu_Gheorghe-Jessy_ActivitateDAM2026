@@ -9,13 +9,12 @@ public class Vagon implements Serializable {
     boolean esteFunctional;
     double dimensiune;
 
-    public Vagon(String tip,double g,float grd,boolean func,double dim)
-    {
-        tip=tipVagon;
-        g=greutate;
-        grd=gradConfort;
-        func=esteFunctional;
-        dim=dimensiune;
+    public Vagon(String tipVagon, double greutate, float gradConfort, boolean esteFunctional, double dimensiune) {
+        this.tipVagon = tipVagon;
+        this.greutate = greutate;
+        this.gradConfort = gradConfort;
+        this.esteFunctional = esteFunctional;
+        this.dimensiune = dimensiune;
     }
 
     public Vagon() {

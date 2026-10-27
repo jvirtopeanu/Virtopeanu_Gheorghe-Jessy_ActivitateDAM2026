@@ -53,7 +53,7 @@ public class AddVagonAIActivity extends AppCompatActivity {
         String greutateStr = greutateEt.getText().toString().trim();
 
         if (tipVagon.isEmpty() || greutateStr.isEmpty()) {
-            Toast.makeText(this, "Completați toate câmpurile!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Completați toate campurile!", Toast.LENGTH_SHORT).show();
             return;
         }
 
