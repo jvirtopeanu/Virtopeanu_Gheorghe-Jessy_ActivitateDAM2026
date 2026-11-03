@@ -67,8 +67,9 @@ public class AddVagonAIActivity extends AppCompatActivity {
 
         Intent intentRezultat = new Intent();
         Bundle bundle = new Bundle();
-        bundle.putSerializable(EXTRA_VAGON_OBJECT, vagonNou);
+        bundle.putParcelable(EXTRA_VAGON_OBJECT, vagonNou);
         intentRezultat.putExtras(bundle);
+
 
         setResult(RESULT_OK, intentRezultat);
         finish();

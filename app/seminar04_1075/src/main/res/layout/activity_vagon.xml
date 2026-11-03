@@ -53,21 +53,23 @@
             android:id="@+id/garnitura_sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="@id/greutate_et"
             app:layout_constraintStart_toStartOf="@id/greutate_et"
             app:layout_constraintTop_toBottomOf="@id/greutate_et" />
 
+
         <RatingBar
             android:id="@+id/confort_rb"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="-16dp"
-            tools:layout_editor_absoluteY="213dp"
+            android:layout_marginTop="12dp"
             android:numStars="5"
             android:stepSize="0.5"
+            android:rating="0"
             app:layout_constraintStart_toStartOf="@id/garnitura_sp"
-            app:layout_constraintTop_toBottomOf="@id/garnitura_sp"/>
+            app:layout_constraintTop_toBottomOf="@id/garnitura_sp" />
+
 
         <CheckBox
             android:id="@+id/esteFunctional_cb"
@@ -83,7 +85,7 @@
             android:id="@+id/areClimatizare_sw"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="27dp"
             android:text="Sistem de climatizare / AC"
             app:layout_constraintEnd_toEndOf="@id/garnitura_sp"
             app:layout_constraintStart_toStartOf="@id/esteFunctional_cb"

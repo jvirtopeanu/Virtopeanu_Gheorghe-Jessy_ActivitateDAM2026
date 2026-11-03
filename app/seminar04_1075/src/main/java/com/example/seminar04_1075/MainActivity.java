@@ -33,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
                             if (bundle != null) {
 
-                                Vagon vagonPrimit = (Vagon)
-                                        bundle.getSerializable(
-                                                AddVagonActivity.EXTRA_VAGON_OBJECT
-                                        );
+
+                                Vagon vagonPrimit = bundle.getParcelable(
+                                        AddVagonActivity.EXTRA_VAGON_OBJECT
+                                );
+
 
                                 if (vagonPrimit != null) {
 
@@ -62,9 +63,12 @@ public class MainActivity extends AppCompatActivity {
                         if (result.getResultCode() == RESULT_OK
                                 && result.getData() != null) {
 
+
                             ArrayList<Vagon> listaActualizata =
-                                    (ArrayList<Vagon>) result.getData()
-                                            .getSerializableExtra("lista_vagoane");
+                                    result.getData().getParcelableArrayListExtra(
+                                            "lista_vagoane"
+                                    );
+
 
                             if (listaActualizata != null) {
                                 listaVagoane.clear();
@@ -116,7 +120,12 @@ public class MainActivity extends AppCompatActivity {
                     ListaVagoaneActivity.class
             );
 
-            intent.putExtra("lista_vagoane", listaVagoane);
+
+            intent.putParcelableArrayListExtra(
+                    "lista_vagoane",
+                    listaVagoane
+            );
+
 
             listaVagoaneLauncher.launch(intent);
         });

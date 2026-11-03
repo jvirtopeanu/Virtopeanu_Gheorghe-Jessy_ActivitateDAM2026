@@ -13,10 +13,16 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+
 
 public class AddVagonActivity extends AppCompatActivity {
 
     public static final String EXTRA_VAGON_OBJECT = "extra_vagon_object";
+
+
+    private Vagon vagonDeEditat;
 
     private EditText tipVagonEt, greutateEt;
     private Spinner garnituraSp;
@@ -25,6 +31,8 @@ public class AddVagonActivity extends AppCompatActivity {
     private Switch areClimatizareSw;
     private RadioGroup dimensiuneRg;
     private Button salveazaBtn;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,36 @@ public class AddVagonActivity extends AppCompatActivity {
         salveazaBtn = findViewById(R.id.salveaza_btn);
 
 
+        vagonDeEditat = getIntent().getParcelableExtra(
+                EXTRA_VAGON_OBJECT
+        );
+
+        if (vagonDeEditat != null) {
+
+            tipVagonEt.setText(vagonDeEditat.getTipVagon());
+
+            greutateEt.setText(
+                    String.valueOf(vagonDeEditat.getGreutate())
+            );
+
+            confortRb.setRating(
+                    vagonDeEditat.getGradConfort()
+            );
+
+            esteFunctionalCb.setChecked(
+                    vagonDeEditat.isEsteFunctional()
+            );
+
+            if (vagonDeEditat.getDimensiune() == 26.4) {
+                dimensiuneRg.check(R.id.dimensiune26_rb);
+            } else {
+                dimensiuneRg.check(R.id.dimensiune20_rb);
+            }
+
+            salveazaBtn.setText("Salvează modificările");
+        }
+
+
         String[] optiuniGarnitura = {"InterCity", "Regio", "InterRegio", "Marfar"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_dropdown_item, optiuniGarnitura);
@@ -51,34 +89,68 @@ public class AddVagonActivity extends AppCompatActivity {
         salveazaBtn.setOnClickListener(v -> salveazaDate());
     }
 
+
     private void salveazaDate() {
         String tipVagon = tipVagonEt.getText().toString().trim();
         String greutateStr = greutateEt.getText().toString().trim();
 
         if (tipVagon.isEmpty() || greutateStr.isEmpty()) {
-            Toast.makeText(this, "Completați toate câmpurile text!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,
+                    "Completați toate câmpurile text!",
+                    Toast.LENGTH_SHORT).show();
             return;
         }
 
-        double greutate = Double.parseDouble(greutateStr);
+        double greutate;
+
+        try {
+            greutate = Double.parseDouble(greutateStr);
+        } catch (NumberFormatException e) {
+            greutateEt.setError("Introduceți o greutate validă!");
+            return;
+        }
+
         float gradConfort = confortRb.getRating();
         boolean esteFunctional = esteFunctionalCb.isChecked();
 
         double dimensiune = 20.0;
-        if (dimensiuneRg.getCheckedRadioButtonId() == R.id.dimensiune26_rb) {
+
+        if (dimensiuneRg.getCheckedRadioButtonId()
+                == R.id.dimensiune26_rb) {
             dimensiune = 26.4;
         }
 
+        Vagon vagonRezultat;
 
-        Vagon vagonNou = new Vagon(tipVagon, greutate, gradConfort, esteFunctional, dimensiune);
+        if (vagonDeEditat != null) {
 
+            vagonDeEditat.setTipVagon(tipVagon);
+            vagonDeEditat.setGreutate(greutate);
+            vagonDeEditat.setGradConfort(gradConfort);
+            vagonDeEditat.setEsteFunctional(esteFunctional);
+            vagonDeEditat.setDimensiune(dimensiune);
+
+            vagonRezultat = vagonDeEditat;
+        } else {
+
+            vagonRezultat = new Vagon(
+                    tipVagon,
+                    greutate,
+                    gradConfort,
+                    esteFunctional,
+                    dimensiune
+            );
+        }
 
         Intent intentRezultat = new Intent();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(EXTRA_VAGON_OBJECT, vagonNou);
-        intentRezultat.putExtras(bundle);
+
+        intentRezultat.putExtra(
+                EXTRA_VAGON_OBJECT,
+                vagonRezultat
+        );
 
         setResult(RESULT_OK, intentRezultat);
         finish();
     }
+
 }

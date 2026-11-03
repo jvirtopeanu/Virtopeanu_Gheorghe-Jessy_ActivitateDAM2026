@@ -2,4 +2,9 @@
     <string name="app_name">seminar04_1075</string>
     <string name="Adaugare_obiect_vagon">Adaugare_obiect_vagon</string>
     <string name="tip_vagon">tip_vagon</string>
+    <string name="_1_adaug_vagon_clasic">1. Adaugă Vagon (Clasic)</string>
+    <string name="greutate">Greutate</string>
+    <string name="confort">Confort</string>
+    <string name="func_ional">Funcțional</string>
+    <string name="dimensiune">Dimensiune</string>
 </resources>
