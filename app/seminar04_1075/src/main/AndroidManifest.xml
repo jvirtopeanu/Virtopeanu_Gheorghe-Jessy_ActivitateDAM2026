@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -32,6 +34,18 @@
 
         <activity android:name=".ListaVagoaneActivity"
             android:exported="false"/>
+
+
+        <activity
+            android:name=".GalerieVagoaneActivity"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".DetaliiVagonActivity"
+            android:exported="false" />
+
+
 
     </application>
 </manifest>

@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Button culegeBtn;
     private Button culegeAiBtn;
     private Button veziListaBtn;
-
+    private Button galerieBtn;
     private ArrayList<Vagon> listaVagoane = new ArrayList<>();
 
     private final ActivityResultLauncher<Intent> addVagonLauncher =
@@ -92,6 +92,18 @@ public class MainActivity extends AppCompatActivity {
         culegeBtn = findViewById(R.id.culege_btn);
         culegeAiBtn = findViewById(R.id.culege_ai_btn);
         veziListaBtn = findViewById(R.id.vezi_lista_btn);
+
+        galerieBtn = findViewById(R.id.galerie_btn);
+
+        galerieBtn.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    GalerieVagoaneActivity.class
+            );
+
+            startActivity(intent);
+        });
 
 
         culegeBtn.setOnClickListener(v -> {

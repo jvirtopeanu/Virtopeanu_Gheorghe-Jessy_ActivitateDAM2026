@@ -41,4 +41,15 @@
         app:layout_constraintTop_toBottomOf="@id/culege_ai_btn" />
 
 
+    <Button
+        android:id="@+id/galerie_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="4. Galerie vagoane"
+        app:layout_constraintStart_toStartOf="@id/vezi_lista_btn"
+        app:layout_constraintEnd_toEndOf="@id/vezi_lista_btn"
+        app:layout_constraintTop_toBottomOf="@id/vezi_lista_btn" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
