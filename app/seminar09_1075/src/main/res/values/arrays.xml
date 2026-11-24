@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="zile">
+        <item>1 ZI</item>
+        <item>5 ZILE</item>
+    </string-array>
+</resources>

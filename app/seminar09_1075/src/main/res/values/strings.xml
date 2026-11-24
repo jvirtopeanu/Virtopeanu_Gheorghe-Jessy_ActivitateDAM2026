@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">seminar09_1075</string>
+    <string name="deschide_vreme">Deschide vreme</string>
+    <string name="deschide_vremea">Deschide vremea</string>
+    <string name="cauta_oras">Cauta oras</string>
+    <string name="introdu_oras">Introdu oras</string>
+    <string name="oras_negasit">Orașul nu a fost găsit</string>
+    <string name="cod_oras">Cod oraș: %1$s</string>
+    <string name="eroare_api">Eroare API: %1$s</string>
+</resources>
